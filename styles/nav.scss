@@ -1,0 +1,35 @@
+@use 'variables' as v;
+
+nav {
+  height: 80%;
+  width: 100%;
+  // background-color: v.$main-color;
+  background-image: url(../images/donuts.jpg);
+  color: #FFFFFF;
+  padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+
+  .logo-slogan {
+    @include v.col-center-V;
+    font-family: v.$main-font-stack;
+    .logo {
+      font-size: 40px;
+    }
+    .slogan {
+      font-size: 15px;
+    }
+  }
+
+
+  .nav-menu {
+    // @include v.col-center-V;
+    align-items: center;
+    padding-left: 1em;
+  }
+
+}

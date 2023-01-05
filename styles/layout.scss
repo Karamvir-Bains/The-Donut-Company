@@ -1,6 +1,14 @@
 // See: https://sass-lang.com/
+@use 'variables' as v;
 
 body,
 html {
   margin: 0;
+}
+
+body {
+  color: black;
+  background-color: #f4f1ec;
+  font-size: 24px;
+  @include v.col-center-V;
 }
