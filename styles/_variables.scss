@@ -1,0 +1,28 @@
+// Fonts
+$main-font-stack: 'Bungee', sans-serif;
+$default-font-stack: 'Source Sans Pro', sans-serif;
+
+// Colors
+// $main-color: #4056A1;
+// $secondary-color: #545149;
+
+// Mixins
+
+@mixin col-center-HV {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin col-center-V {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin col-center-H {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
