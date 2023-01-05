@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- dynamic title: Order Status / Order Confirmation -->
+  <title>Order Status</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/status.css" type="text/css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <!-- If we need to include the banner... -->
+  <!-- <%- //include('partials/_banner') %> -->
+  <!-- If we're just adding the upper header -->
+  <header id="status_header">
+    <p>Service Name</p>
+    <p>Order History</p>
+  </header>
+
+  <main>
+    <!-- Which section is visible will depend on order status -->
+    <section id="waiting">
+      <p>Waiting for the restaurant to confirm your order</p>
+      <img src="" />
+    </section>
+
+
+    <!-- <section id="confirmation">
+      <p>Your order is being prepared</p>
+    </section> -->
+
+  </main>
+</body>
+</html>

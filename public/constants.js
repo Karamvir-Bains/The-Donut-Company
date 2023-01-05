@@ -6,9 +6,11 @@ const RESTAURANT_ADDRESS = {
   province: 'Quebec',
   postcode: 'H9B 2N4'
 };
+const RESTAURANT_HOURS = '9:00 AM - 9:00 PM';
 
 module.exports = {
   RESTAURANT_NAME,
   RESTAURANT_PHONE,
-  RESTAURANT_ADDRESS
+  RESTAURANT_ADDRESS,
+  RESTAURANT_HOURS
 };
