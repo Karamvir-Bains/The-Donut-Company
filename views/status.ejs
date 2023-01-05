@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <!-- <link rel="stylesheet" href="/styles/layout.css" /> -->
   <link rel="stylesheet" href="/styles/status.css" type="text/css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -32,13 +32,17 @@
     <!-- Which section is visible will depend on order status -->
     <section id="waiting">
       <p>Waiting for the restaurant to confirm your order</p>
-      <img src="" />
+      <img src="/images/waiting_icon.png"  alt="waiting icon">
     </section>
 
-
-    <!-- <section id="confirmation">
-      <p>Your order is being prepared</p>
-    </section> -->
+    <section id="confirmation">
+      <p><strong>Your order is being prepared</strong><br>Estimate 30 - 45 minutes</p>
+      <ul id="current-status">
+        <li id="cooking">Cooking</li>
+        <li id="finishing">Finishing Up</li>
+        <li id="ready">Ready For Pickup</li>
+      </ul>
+    </section>
 
   </main>
 </body>

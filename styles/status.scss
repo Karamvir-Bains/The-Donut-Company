@@ -1,3 +1,12 @@
+@use 'variables' as v;
+
+@mixin row-center-HV {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   width: 50%;
   margin: 0 auto;
@@ -24,21 +33,67 @@ body {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     height: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    @include row-center-HV;
+
+    section#waiting {
+      display: none;
+      // display: flex;
+    }
+
+    section#confirmation {
+      display: flex;
+      // display: none;
+    }
 
     section {
       background-color: #5C5C5C;
-      width: 60%;
+      width: 80%;
       margin: 0 auto;
       height: 80%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
       border-radius: 10px 10px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      p {
+        width: 40%;
+        text-align: center;
+      }
+
+      img {
+        width: 20%;
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        li {
+          width: 130px;
+          text-align: center;
+          border-radius: 10px 10px 10px 10px;
+          padding:  10px 0px 10px 0px;
+          margin:  0px 10px 0px 10px;
+          color: #5C5C5C;
+        }
+
+        li#cooking {
+          background-color: lightgreen;
+        }
+
+        li#finishing {
+          background-color: azure;
+        }
+
+        li#ready {
+          background-color: aliceblue;
+        }
+
+      }// ul
+
     } // section
   } // main
 } // body
