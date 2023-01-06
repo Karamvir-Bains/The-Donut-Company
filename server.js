@@ -35,6 +35,7 @@ const statusApiRoutes = require('./routes/status-api');
 const usersRoutes = require('./routes/users');
 const twilioApiRoutes = require('./routes/twilio-api');
 const twilioRoutes = require('./routes/twilio');
+const smsResponseRoutes = require('./routes/sms-response');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -46,6 +47,7 @@ app.use('/api/status', statusApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/twilio', twilioApiRoutes);
 app.use('/twilio', twilioRoutes);
+app.use('/sms-response', smsResponseRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

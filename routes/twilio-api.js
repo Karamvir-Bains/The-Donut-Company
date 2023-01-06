@@ -9,11 +9,13 @@ const PHONE_NUMBER = process.env.PHONE_NUMBER;
 const express = require('express');
 const router  = express.Router();
 const client = require('twilio')(ACCOUNT_SID, AUTHENTICATION_TOKEN);
+const order = `hazelnut donut`;
+
 
 router.get('/', (req, res) => {
   client.messages
     .create({
-      body: 'Test',
+      body: `New Order: ${order} \n Msg confirm or decline`,
       messagingServiceSid: MESSAGING_SERVICE_SID,
       to: PHONE_NUMBER
     })
