@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/checkout.css" />
+  <link rel="stylesheet" href="/styles/menuItems.css" />
+
+
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -40,17 +43,12 @@
   <main class="container">
     <section class="categories-menu"></section>
     <section class="menu-items-container">
-      <%- include('partials/_menu_item'); %>
-      <%- include('partials/_menu_item'); %>
-      <%- include('partials/_menu_item'); %>
-      <%- include('partials/_menu_item'); %>
+      <ul id="menu-items"></div>
     </section>
     <section class="checkout-container">
       <%- include('partials/_checkout'); %>
     </section>
-
   </main>
-  <div id="testMenuItems" style="z-index: 99"></div>
 </body>
 
 </html>

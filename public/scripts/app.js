@@ -6,20 +6,22 @@ $(document).ready(function() {
   })
   .done((response) => {
     // I added a div element to index.ejs just to append the results to...
-    const $menuItemList = $('#testMenuItems');
+    const $menuItems = $('#menu-items');
     // iterate through the results and append the HTML
     for (const item of response.items) {
       const menuItem = $(`
-        <form method="POST" action="">
-          <button style="width: 200px; padding: 0; border: 0;">
-            <img src="/images/${item.img}" alt="${item.name}" width="200" height="200">
-            <p style="text-align: start; margin-left: 1em;">${item.name}</p>
-            <p style="text-align: start; margin-left: 1em;">${item.description}</p>
-            <p style="text-align: start; margin-left: 1em;">CA$${Number(item.price)/100}</p>
-          </button>
-        </form>
+        <li id="itemId${item.id}" class="menu-item">
+          <img class="donut-thumbnail" src="/images/${item.img}" alt="${item.name}">
+          <p class="item-title">${item.name}</p>
+          <p class="item-desc">${item.description}</p>
+          <p class="item-price">CA$${Number(item.price)/100}</p>
+        </li>
       `);
-      $menuItemList.append(menuItem);
+      $menuItems.append(menuItem);
     }
   });
+
+  // load pop-up when user clicks on menu item
+
+
 }); // document.ready

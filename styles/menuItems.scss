@@ -1,0 +1,45 @@
+ul#menu-items {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 0;
+
+  li.menu-item {
+    width: 200px;
+    text-align: center;
+    padding:  10px 0px 10px 0px;
+    margin:  20px 10px 20px 10px;
+    color: #5C5C5C;
+    font-size: small;
+
+    img.donut-thumbnail {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    p.item-title {
+      font-weight: bold;
+      font-size: larger;
+    }
+
+    p.item-desc {
+      text-align: justify;
+    }
+
+    p.item-price {
+      font-size: larger;
+      color: black;
+      background-color: chocolate;
+      border-radius: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: 1px solid #a8b0bc;
+      border-style: outset;
+    }
+
+  } //li
+} // ul
