@@ -30,6 +30,8 @@ app.use(express.static('public'));
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
+const menuApiRoutes = require('./routes/menu-api');
+const statusApiRoutes = require('./routes/status-api');
 const usersRoutes = require('./routes/users');
 const twilioApiRoutes = require('./routes/twilio-api');
 const twilioRoutes = require('./routes/twilio');
@@ -39,6 +41,8 @@ const twilioRoutes = require('./routes/twilio');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
+app.use('/api/menu', menuApiRoutes);
+app.use('/api/status', statusApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/twilio', twilioApiRoutes);
 app.use('/twilio', twilioRoutes);
