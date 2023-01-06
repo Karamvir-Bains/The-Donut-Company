@@ -5,9 +5,9 @@ $(document).ready(function() {
     url: '/api/menu'
   })
   .done((response) => {
-    // I added a div element to index.ejs just to append the results to...
+    // I added a div element to index.ejs to append the results to...
     const $menuItems = $('#menu-items');
-    // iterate through the results and append the HTML
+    // iterate through the results of the menu items query then append the HTML
     for (const item of response.items) {
       const menuItem = $(`
         <li id="itemId${item.id}" class="menu-item">
@@ -19,9 +19,12 @@ $(document).ready(function() {
       `);
       $menuItems.append(menuItem);
     }
-  });
 
-  // load pop-up when user clicks on menu item
+    // load pop-up when user clicks on menu item
+    $('.menu-item').on('click', function() {
+      // console.log('show source:', $( this ).val('src') );
+      console.log('click:', this.id);
+    });
 
-
+  }); // .done
 }); // document.ready
