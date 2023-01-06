@@ -1,7 +1,7 @@
 @use 'variables' as v;
 
 nav {
-  height: 80%;
+  height: 600px;
   width: 100%;
   // background-color: v.$main-color;
   background-image: url(../images/donuts.jpg);
@@ -10,9 +10,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  position: fixed;
-  top: 0;
-  z-index: 5;
+  //position: fixed;
+  //top: 0;
+  //z-index: 5;
 
   .logo-slogan {
     @include v.col-center-V;
@@ -28,8 +28,18 @@ nav {
 
   .nav-menu {
     // @include v.col-center-V;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
     align-items: center;
-    padding-left: 1em;
+    margin: 0;
+
+    li#user_name {
+      display: inline-block;
+      margin-left: 200px;
+      // font-size: 1.5rem;
+      // font-weight: bolder;
+    }
   }
 
 }
