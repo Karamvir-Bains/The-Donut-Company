@@ -31,9 +31,10 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const menuApiRoutes = require('./routes/menu-api');
+const statusApiRoutes = require('./routes/status-api');
 const usersRoutes = require('./routes/users');
-// const twilioApiRoutes = require('./routes/twilio-api');
-// const twilioRoutes = require('./routes/twilio');
+const twilioApiRoutes = require('./routes/twilio-api');
+const twilioRoutes = require('./routes/twilio');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,9 +42,10 @@ const usersRoutes = require('./routes/users');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/menu', menuApiRoutes);
+app.use('/api/status', statusApiRoutes);
 app.use('/users', usersRoutes);
-// app.use('/api/twilio', twilioApiRoutes);
-// app.use('/twilio', twilioRoutes);
+app.use('/api/twilio', twilioApiRoutes);
+app.use('/twilio', twilioRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -51,7 +53,7 @@ app.use('/users', usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('status');
+  res.render('index');
 });
 
 app.listen(PORT, () => {

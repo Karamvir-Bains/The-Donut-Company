@@ -8,7 +8,8 @@
 }
 
 body {
-  width: 50%;
+  width: 80%;
+  max-width: 450px;
   margin: 0 auto;
   color: white;
 
@@ -32,7 +33,7 @@ body {
     background-color: #828282;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    height: 500px;
+    height: 550px;
     @include row-center-HV;
 
     section#waiting {
@@ -178,4 +179,3 @@ body {
     opacity: 0;
   }
 }
-
