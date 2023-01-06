@@ -12,4 +12,4 @@ INSERT INTO menu_items (name, img, price, description, preparation_time) VALUES
   ('Nutty Chocolate', 'choc_n_nut.jpg', 199, 'A donut frosted with chocolate and topped with nuts.', 15),
   ('Multi-colour', 'multi_colour.jpg', 999, '12 frosted donuts with multi-coloured toppings.', 20),
   ('Traditional', 'traditional.jpg', 999, '4 assorted traditional donuts with various glazes.', 10),
-  ('Little Monsters', 'monsyter.jpg', 1599, 'Assortment of 12 out of this world decorated donuts.', 30);
+  ('Little Monsters', 'monster.jpg', 1599, 'Assortment of 12 out of this world decorated donuts.', 30);
