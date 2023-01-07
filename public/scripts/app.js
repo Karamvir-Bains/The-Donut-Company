@@ -22,7 +22,8 @@ $(document).ready(function() {
 
     // load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
-      const $itemPopup = $('#testPopUp');
+      const $itemPopup = $('#popup-item');
+      const $popupBackground = $('#popup-background');
       const itemSrc = $(this).children('img').attr('src');
       const itemName = $(this).children('p.item-title').text();
       const itemDesc = $(this).children('p.item-desc').text();
@@ -48,23 +49,31 @@ $(document).ready(function() {
       `); // popItem
       $itemPopup.append(popItem);
 
-        // modify quantity and price when -/+ buttons are clicked
-        $('.quantityButton').on('click', function() {
-          const $button = $(this);
-          const oldValue = Number($('#donutQuantity').text());
-          let newValue = oldValue;
-          if ($button.text() == "+") {
-            newValue++;
-          } else {
-          // Don't allow decrementing below zero
-            if (oldValue > 0) {
-              newValue--;
-            }
+      // dim the background behing the popup using a full viewport div
+      $popupBackground.css('display', 'block');
+      // kill the popup if user clicks outside of it (on the background div)
+      $popupBackground.on('click', function() {
+        $popupBackground.css('display', 'none');
+        $itemPopup.empty();
+      });
+
+      // modify quantity and price when -/+ buttons are clicked
+      $('.quantityButton').on('click', function() {
+        const $button = $(this);
+        const oldValue = Number($('#donutQuantity').text());
+        let newValue = oldValue;
+        if ($button.text() == "+") {
+          newValue++;
+        } else {
+        // Don't allow decrementing below zero
+          if (oldValue > 0) {
+            newValue--;
           }
-          $('#donutQuantity').text(newValue);
-          // update the checkout button
-          $('#donutTotal').text(`CA$${itemPrice * newValue}`);
-        }); // .quantityButton item on click
+        }
+        $('#donutQuantity').text(newValue);
+        // update the checkout button
+        $('#donutTotal').text(`CA$${itemPrice * newValue}`);
+      }); // .quantityButton item on click
 
     }); // .menu item on click
   }); // .done
