@@ -29,21 +29,30 @@
       <span class="logo">The Donut Company</span>
       <span class="slogan">Make Your Day Donuts</span>
     </div>
-    <div class="nav-menu">
-      <span id="user_name">User Name</span>
-      <span id="order_history">Order History</span>
-    </div>
+    <ul class="nav-menu">
+      <li><a href="/">User Name</a></li>
+      <li><a href="/">Order History</a></li>
+    </ul>
   </nav>
-  <!-- <h1>Have fun! 🥔</h1> -->
-  <!-- <%- include('partials/_menu_item_popup'); %> -->
-  <!-- <%- include('partials/_menu_item'); %> -->
+
   <main class="container">
-    <section class="categories-menu"></section>
-    <section class="menu-items-container">
-      <%- include('partials/_menu_item'); %>
-      <%- include('partials/_menu_item'); %>
-      <%- include('partials/_menu_item'); %>
-      <%- include('partials/_menu_item'); %>
+    <section class="menu-section">
+      <ul class="menu-categories">
+        <li><a href="/" active>Most Popular</a></li>
+        <li><a href="/">Seasonal</a></li>
+        <li><a href="/">Vegan</a></li>
+        <li><a href="/">Gluten Free</a></li>
+        <li><a href="/">Assortment</a></li>
+      </ul>
+
+      <div class="menu-items">
+        <%- include('partials/_menu_item'); %>
+        <%- include('partials/_menu_item'); %>
+        <%- include('partials/_menu_item'); %>
+        <%- include('partials/_menu_item'); %>
+        <%- include('partials/_menu_item'); %>
+        <%- include('partials/_menu_item'); %>
+      </div>
     </section>
     <section class="checkout-container">
       <%- include('partials/_checkout'); %>

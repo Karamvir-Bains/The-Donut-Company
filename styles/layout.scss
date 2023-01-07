@@ -1,6 +1,11 @@
 // See: https://sass-lang.com/
 @use 'variables' as v;
 
+*{
+  box-sizing: border-box;
+}
+
+
 body,
 html {
   margin: 0;
@@ -17,33 +22,80 @@ main.container {
   width: 90%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: -200px;
+  padding: 20px;
+  border: 1px solid #a8b0bc;
+  border-radius: 12px;
+  background-color: white;
+
+
+} //container
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  flex: 3;
+}
+
+.menu-categories {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-
-
-  .menu-items-container {
-    margin-top: -100px;
-    width: 68%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    // flex-wrap: wrap;
-    padding: 20px;
-    padding-top: 100px; //for menu
-    border: 1px solid #a8b0bc;
-    border-radius: 12px;
-    background-color: white;
-  }
-  .checkout-container {
-    margin-top: -270px; //to be changed
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: 1px solid #a8b0bc;
-    border-radius: 12px;
-    background-color: white;
-  }
+  width: 60%;
+  font-size: 16px;
 
 }
+ul.menu-categories {
+  gap: 5px;
+}
+.menu-categories li {
+  list-style: none;
+  text-decoration: none;
+}
+.menu-categories li a {
+  white-space: nowrap;
+  display: block;
+  padding: 10px;
+}
+.menu-categories a:link,
+.menu-categories a:visited,
+.menu-categories a:hover,
+.menu-categories a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-categories a:hover,
+.menu-categories a:active {
+  border-bottom:3px solid gray;
+}
+
+
+.menu-items {
+  padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.checkout-container {
+  margin-top: -650px;
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #a8b0bc;
+  border-radius: 10px;
+  background-color: white;
+}
+
