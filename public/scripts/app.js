@@ -22,9 +22,50 @@ $(document).ready(function() {
 
     // load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
-      // console.log('show source:', $( this ).val('src') );
-      console.log('click:', this.id);
-    });
+      const $itemPopup = $('#testPopUp');
+      const itemSrc = $(this).children('img').attr('src');
+      const itemName = $(this).children('p.item-title').text();
+      const itemDesc = $(this).children('p.item-desc').text();
+      const itemPrice = Number($(this).children('p.item-price').text().slice(3));
+      let quantity = 1;
+      const popItem = $(`
+        <form class="popup" id="${this.id}" method="POST" action="">
+          <div class="popupContainer">
+            <img src="${itemSrc}" alt="${itemName}">
+            <p class="popupName">${itemName}</p>
+            <p class="popupDesc">${itemDesc}</p>
+            <div class="quantityButtons">
+              <button class="quantityButton" type="button">-</button>
+              <p id="donutQuantity">${quantity}</p>
+              <button class="quantityButton" type="button">+</button>
+            </div>
+            <button id="checkoutButton">
+              <p>Add To Cart</p>
+              <p id="donutTotal">CA$${itemPrice * quantity}</p>
+            </button>
+          </div>
+        </form>
+      `); // popItem
+      $itemPopup.append(popItem);
 
+        // modify quantity and price when -/+ buttons are clicked
+        $('.quantityButton').on('click', function() {
+          const $button = $(this);
+          const oldValue = Number($('#donutQuantity').text());
+          let newValue = oldValue;
+          if ($button.text() == "+") {
+            newValue++;
+          } else {
+          // Don't allow decrementing below zero
+            if (oldValue > 0) {
+              newValue--;
+            }
+          }
+          $('#donutQuantity').text(newValue);
+          // update the checkout button
+          $('#donutTotal').text(`CA$${itemPrice * newValue}`);
+        }); // .quantityButton item on click
+
+    }); // .menu item on click
   }); // .done
 }); // document.ready
