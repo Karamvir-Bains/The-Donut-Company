@@ -6,7 +6,7 @@ div#popup-background {
   left: 0;
   z-index: 9;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.7;
   display: none;
 }
 
@@ -15,6 +15,20 @@ form.popup {
   position: fixed;
   top: 10px;
   left: 27%;
+
+  p#closePopup {
+    position: absolute;
+    top: 0px;
+    right: 22px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    opacity: 0.3;
+  }
+
+  p#closePopup:hover {
+    opacity: 1;
+  }
 
   div.popupContainer {
     width: 370px;

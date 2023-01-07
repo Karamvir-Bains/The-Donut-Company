@@ -23,7 +23,6 @@ $(document).ready(function() {
     // load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
       const $itemPopup = $('#popup-item');
-      const $popupBackground = $('#popup-background');
       const itemSrc = $(this).children('img').attr('src');
       const itemName = $(this).children('p.item-title').text();
       const itemDesc = $(this).children('p.item-desc').text();
@@ -31,6 +30,7 @@ $(document).ready(function() {
       let quantity = 1;
       const popItem = $(`
         <form class="popup" id="${this.id}" method="POST" action="">
+          <p id="closePopup">X</p>
           <div class="popupContainer">
             <img src="${itemSrc}" alt="${itemName}">
             <p class="popupName">${itemName}</p>
@@ -50,9 +50,12 @@ $(document).ready(function() {
       $itemPopup.append(popItem);
 
       // dim the background behing the popup using a full viewport div
+      const $popupBackground = $('#popup-background');
       $popupBackground.css('display', 'block');
-      // kill the popup if user clicks outside of it (on the background div)
-      $popupBackground.on('click', function() {
+
+      // kill the popup if user clicks outside of it or on the close icon
+      const $closePopup = $('#closePopup');
+      $popupBackground.add($closePopup).on('click', function() {
         $popupBackground.css('display', 'none');
         $itemPopup.empty();
       });
@@ -72,7 +75,7 @@ $(document).ready(function() {
         }
         $('#donutQuantity').text(newValue);
         // update the checkout button
-        $('#donutTotal').text(`CA$${itemPrice * newValue}`);
+        $('#donutTotal').text(`CA$${(Math.round(itemPrice * newValue *100)/100).toFixed(2)}`);
       }); // .quantityButton item on click
 
     }); // .menu item on click
