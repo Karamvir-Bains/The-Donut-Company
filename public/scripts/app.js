@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     // load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
-      const $itemPopup = $('#testPopUp');
+      const $itemPopup = $('#popup-item');
       const itemSrc = $(this).children('img').attr('src');
       const itemName = $(this).children('p.item-title').text();
       const itemDesc = $(this).children('p.item-desc').text();
@@ -30,6 +30,7 @@ $(document).ready(function() {
       let quantity = 1;
       const popItem = $(`
         <form class="popup" id="${this.id}" method="POST" action="">
+          <p id="closePopup">X</p>
           <div class="popupContainer">
             <img src="${itemSrc}" alt="${itemName}">
             <p class="popupName">${itemName}</p>
@@ -48,23 +49,34 @@ $(document).ready(function() {
       `); // popItem
       $itemPopup.append(popItem);
 
-        // modify quantity and price when -/+ buttons are clicked
-        $('.quantityButton').on('click', function() {
-          const $button = $(this);
-          const oldValue = Number($('#donutQuantity').text());
-          let newValue = oldValue;
-          if ($button.text() == "+") {
-            newValue++;
-          } else {
-          // Don't allow decrementing below zero
-            if (oldValue > 0) {
-              newValue--;
-            }
+      // dim the background behing the popup using a full viewport div
+      const $popupBackground = $('#popup-background');
+      $popupBackground.css('display', 'block');
+
+      // kill the popup if user clicks outside of it or on the close icon
+      const $closePopup = $('#closePopup');
+      $popupBackground.add($closePopup).on('click', function() {
+        $popupBackground.css('display', 'none');
+        $itemPopup.empty();
+      });
+
+      // modify quantity and price when -/+ buttons are clicked
+      $('.quantityButton').on('click', function() {
+        const $button = $(this);
+        const oldValue = Number($('#donutQuantity').text());
+        let newValue = oldValue;
+        if ($button.text() == "+") {
+          newValue++;
+        } else {
+        // Don't allow decrementing below zero
+          if (oldValue > 0) {
+            newValue--;
           }
-          $('#donutQuantity').text(newValue);
-          // update the checkout button
-          $('#donutTotal').text(`CA$${itemPrice * newValue}`);
-        }); // .quantityButton item on click
+        }
+        $('#donutQuantity').text(newValue);
+        // update the checkout button
+        $('#donutTotal').text(`CA$${(Math.round(itemPrice * newValue *100)/100).toFixed(2)}`);
+      }); // .quantityButton item on click
 
     }); // .menu item on click
   }); // .done
