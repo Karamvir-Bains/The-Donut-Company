@@ -1,16 +1,24 @@
-<div><h4>Your Pickup Order</h4></div>
-<div class="address"><i class="fa-solid fa-location-dot"></i> Pickup at 555 street abc 111.</div>
-<div class="time"><i class="fa-solid fa-timer"></i> Ready in about 15-20 minutes.</div>
-<hr>
+<section id="checkout">
+  <div>
+    <div id="checkout-details">
+      <h4>Your Pickup Order</h4>
+      <div class="address">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Pickup at 555 street abc 111.</span>
+      </div>
+      <div class="time">
+        <i class="fa-solid fa-timer"></i>
+        <span>Ready in about 15-20 minutes.</span>
+      </div>
+    </div>
 
-<form>
-  <ul>
-    <li>Title</li>
-    <li>Title</li>
-    <li>Title</li>
-  </ul>
-  <button class="btn-checkout">
+    <ul>
+      <%- include('_checkout-item'); %>
+    </ul>
+  </div>
+
+  <button>
     <p>Order Now</p>
     <p>CA$14.99</p>
   </button>
-</form>
+</section>
