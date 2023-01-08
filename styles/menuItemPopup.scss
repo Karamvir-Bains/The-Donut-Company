@@ -87,5 +87,10 @@ form.popup {
       font-weight: bold;
     }
 
+    button#checkoutButton:hover {
+      cursor: pointer;
+      background-color: yellow;
+    }
+
   } // div.popupContainer
 } // form
