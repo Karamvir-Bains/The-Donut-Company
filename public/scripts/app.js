@@ -7,8 +7,20 @@ $(document).ready(function() {
   .done((response) => {
     // I added a div element to index.ejs to append the results to...
     const $menuItems = $('#menu-items');
+    // variables to allow categories to be hard-coded
+    let count = 2;
+    const categories = ['Most Popular', 'Seasonal', 'Vegan', 'Gluten Free', 'Assortment'];
     // iterate through the results of the menu items query then append the HTML
-    for (const item of response.items) {
+    for (const i in response.items) {
+      // check for category
+      count++;
+      if (count % 3 === 0) {
+        const arrayIndex = (count / 3) - 1;
+        const category = $(`<li class="menu-category" id="category${arrayIndex}">${categories[arrayIndex]}</li>`);
+        $menuItems.append(category);
+      }
+      // add menu item
+      const item = response.items[i];
       const menuItem = $(`
         <li id="itemId${item.id}" class="menu-item">
           <img class="donut-thumbnail" src="/images/${item.img}" alt="${item.name}">

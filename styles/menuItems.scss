@@ -9,6 +9,12 @@ ul#menu-items {
   max-width: 800px;
   z-index: 5;
 
+  li.menu-category {
+    width: 100%;
+    font-size: 16px;
+    margin-left: 35px;
+  }
+
   li.menu-item {
     width: 200px;
     text-align: center;
