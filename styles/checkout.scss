@@ -12,28 +12,48 @@
   border-bottom: 2px solid black;
 }
 
-.menu-items {
-  padding: 20px;
-
+#checkout {
+  margin-top: -21em;
+  width: 25%;
+  height: 30em;
+  position: fixed;
+  top: 31em;
+  right: 7em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  .menu-items-container {
-    margin-top: -100px;
-    width: 68%;
+  padding: 20px;
+  border: 1px solid #a8b0bc;
+  border-radius: 12px;
+  background-color: white;
+
+  button {
     display: flex;
-    flex-direction: row;
+    width: 85%;
     justify-content: space-between;
-    // flex-wrap: wrap;
-    padding: 20px;
-    padding-top: 100px; //for menu
-    border: 1px solid #a8b0bc;
-    border-radius: 12px;
-    background-color: white;
+    margin: 0 auto 1em auto;
+    border-radius: 10px;
+    background-color: chocolate;
   }
-}
+
+  ul {
+    overflow-y: auto;
+    height: 18em;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    padding: 1em 0.4em;
+    border-bottom: 2px solid black;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .checkout-item-row {
     display: flex;
     align-items: center;
   }

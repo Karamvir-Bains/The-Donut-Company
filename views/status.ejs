@@ -11,39 +11,38 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
-  <!-- <link rel="stylesheet" href="/styles/layout.css" /> -->
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/status.css" type="text/css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/status.js"></script>
 </head>
 
-<body>
-  <!-- If we need to include the banner... -->
-  <!-- <%- //include('partials/_banner') %> -->
-  <!-- If we're just adding the upper header -->
-  <header id="status_header">
-    <p>Service Name</p>
-    <p>Order History</p>
-  </header>
+  <body>
+    <%- include('partials/_header') %>
 
-  <main>
-    <!-- Which section is visible will depend on the order status -->
-    <section id="waiting">
-      <p>Waiting for the restaurant to confirm your order</p>
-      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </section>
+    <main class="status-container">
+      <!-- Which section is visible will depend on the order status -->
+      <section id="waiting">
+        <p>Waiting for the restaurant to confirm your order</p>
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </section>
 
-    <section id="confirmation">
-      <p><strong>Your order is being prepared</strong><br>Estimate 30 - 45 minutes</p>
-      <ul id="current-status">
-        <li id="cooking">Cooking</li>
-        <li id="finishing">Finishing Up</li>
-        <li id="ready">Ready For Pickup</li>
-      </ul>
-    </section>
+      <section id="confirmation">
+        <p><strong>Your order is being prepared</strong><br>Estimate 30 - 45 minutes</p>
+        <ul id="current-status">
+          <li id="cooking">Cooking</li>
+          <li id="finishing">Finishing Up</li>
+          <li id="ready">Ready For Pickup</li>
+        </ul>
+      </section>
 
-  </main>
-</body>
+      <section id="pickup-address">
+        <img src="images/donut-shop-map.jpg" alt="Google Map">
+        <p><strong>Pickup location</strong><br>223 E Pender, Vancouver BC V6A 2T9, Canada</p>
+      </section>
+    </main>
+  </body>
 </html>
