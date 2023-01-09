@@ -14,7 +14,7 @@ $(document).ready(function() {
     for (const i in response.items) {
       // check for category
       count++;
-      if (count % 3 === 0) {
+      if (count % 3 === 0 && count < 18) {
         const arrayIndex = (count / 3) - 1;
         const category = $(`<li class="menu-category" id="category${arrayIndex}">${categories[arrayIndex]}</li>`);
         $menuItems.append(category);
