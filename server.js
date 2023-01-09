@@ -9,6 +9,8 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+const cookieSession = require('cookie-session');
+
 app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -25,6 +27,10 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -37,6 +43,7 @@ const usersRoutes = require('./routes/users');
 const twilioApiRoutes = require('./routes/twilio-api');
 const twilioRoutes = require('./routes/twilio');
 const smsResponseRoutes = require('./routes/sms-response');
+const checkoutRoutes = require('./routes/checkout');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -50,6 +57,7 @@ app.use('/users', usersRoutes);
 app.use('/api/twilio', twilioApiRoutes);
 app.use('/twilio', twilioRoutes);
 app.use('/sms-response', smsResponseRoutes);
+app.use('/checkout', checkoutRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

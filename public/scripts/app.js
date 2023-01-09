@@ -41,7 +41,7 @@ $(document).ready(function() {
       const itemPrice = Number($(this).children('p.item-price').text().slice(3));
       let quantity = 1;
       const popItem = $(`
-        <form class="popup" id="${this.id}" method="POST" action="">
+        <form class="popup" id="${this.id}" method="POST" action="/checkout">
           <p id="closePopup">X</p>
           <div class="popupContainer">
             <img src="${itemSrc}" alt="${itemName}">
