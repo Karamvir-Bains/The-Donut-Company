@@ -20,25 +20,18 @@
   <link rel="stylesheet" href="/styles/checkout.css" />
   <link rel="stylesheet" href="/styles/menuItems.css" />
   <link rel="stylesheet" href="/styles/menuItemPopup.css" />
+  <link rel="stylesheet" href="/styles/banner.css" />
 
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/checkout-animation.js"></script>
 </head>
 
 <body>
-  <nav>
-    <div class="logo-slogan">
-      <span class="logo">The Donut Company</span>
-      <span class="slogan">Make Your Day Donuts</span>
-    </div>
-    <ul class="nav-menu">
-      <li><a href="/">User Name</a></li>
-      <li><a href="/">Order History</a></li>
-    </ul>
-  </nav>
-
+  <%- include('partials/_header'); %>
   <main class="container">
+    <%- include('partials/_banner'); %>
     <section class="menu-section">
       <ul class="menu-categories">
         <li><a href="#category0" active>Most Popular</a></li>
@@ -51,9 +44,7 @@
       <div id="popup-item"></div>
       <div id="popup-background"></div>
     </section>
-
       <%- include('partials/_checkout'); %>
-    </section>
   </main>
 </body>
 

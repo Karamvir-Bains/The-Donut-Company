@@ -1,0 +1,23 @@
+.banner {
+  width: 68%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+  h1 {
+    margin: 0;
+    font-size: 1.3em;
+  }
+  p {
+    margin: 0;
+    &.category {
+      margin-top: 0.5em;
+      font-size: 0.5em;
+    }
+    &.open-hours {
+      margin-top: 0.3em;
+      font-size: 0.6em;
+    }
+  }
+}
