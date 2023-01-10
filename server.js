@@ -45,6 +45,7 @@ const twilioRoutes = require('./routes/twilio');
 const smsResponseRoutes = require('./routes/sms-response');
 const checkoutRoutes = require('./routes/checkout');
 const loginRoutes = require('./routes/login');
+const orderNowSendRoutes = require('./routes/order-now-send');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -60,6 +61,7 @@ app.use('/api/twilio', twilioApiRoutes);
 app.use('/twilio', twilioRoutes);
 app.use('/sms-response', smsResponseRoutes);
 app.use('/checkout', checkoutRoutes);
+app.use('/order-now-send', orderNowSendRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
