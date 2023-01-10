@@ -34,6 +34,9 @@ $(document).ready(function() {
 
     // load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
+      if($('#popup-item').hide()) {
+        $('#popup-item').show();
+      }
       const $itemPopup = $('#popup-item');
       const itemSrc = $(this).children('img').attr('src');
       const itemName = $(this).children('p.item-title').text();
