@@ -13,6 +13,6 @@ INSERT INTO menu_items (name, img, price, description, preparation_time) VALUES
   ('Chocolate Sprinkle', 'choc_sprinkle.jpg', 449, 'Donut with chocolate frosting, topped with sprinkles.', 10),
   ('Sugar Top', 'sugar_top.jpg', 299, '4 plain donuts each topped with sugar.', 10),
   ('Sugar Glaze', 'sugar_glaze.jpg', 299, '4 plain donuts each glazed with sugar.', 10),
-  ('Double Choc', 'double_choc.jpg', 599, 'A three-pack of donuts frosted and topped with chocolate chunks.', 20),
+  ('Double Choc', 'double_choc.jpg', 599, 'A three-pack of donuts frosted & topped with chocolate chunks.', 20),
   ('4 Donut Assortment', 'assortment_4.jpg', 849, 'Assortment of 4 donuts each uniquely frosted and topped.', 20),
   ('Multi-colour', 'multi_colour.jpg', 999, '12 frosted donuts with multi-coloured toppings.', 20);
