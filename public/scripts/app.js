@@ -16,7 +16,7 @@ $(document).ready(function() {
       count++;
       if (count % 3 === 0 && count < 18) {
         const arrayIndex = (count / 3) - 1;
-        const category = $(`<li class="menu-category" id="category${arrayIndex}">${categories[arrayIndex]}</li>`);
+        const category = $(`<li class="menu-category" id="${categories[arrayIndex]}">${categories[arrayIndex]}</li>`);
         $menuItems.append(category);
       }
       // add menu item
