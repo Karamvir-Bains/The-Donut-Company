@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/styles/status.css" type="text/css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/status.js"></script>
+  <script defer src="/scripts/order-status-interval.js"></script>
 </head>
 
   <body>
@@ -32,7 +32,9 @@
       </section>
 
       <section id="confirmation">
-        <p><strong>Your order is being prepared</strong><br>Estimate 30 - 45 minutes</p>
+
+        <p id="order-message"><strong>Your order is being prepared</strong></p>
+        <p id="estimate-time">Estimate 30 - 45 minutes</p>
         <ul id="current-status">
           <li id="cooking">Cooking</li>
           <li id="finishing">Finishing Up</li>
