@@ -1,17 +1,13 @@
 const express = require('express');
 const router  = express.Router();
 const { MessagingResponse } = require('twilio').twiml;
-const editStatus = require('../db/queries/editStatus');
+const editOrder = require('../db/queries/editOrder');
 
 // dummy data for testing purposes
 const user = {
   id: 3,
   name: 'Mike',
   tel: '+15142679278'
-};
-
-const order = {
-  id: 7
 };
 
 router.post('/', (req, res) => {
@@ -21,6 +17,7 @@ router.post('/', (req, res) => {
   const incomingSMS = req.body.Body.toUpperCase();
   let outgoingSMS = `Hi ${user.name}, good news! Your order should be ready for pickup in `;
   let validResponse = true;
+  let delay = 23;
 
   switch (incomingSMS) {
     case 'A':
@@ -28,12 +25,15 @@ router.post('/', (req, res) => {
       break;
     case 'B':
       outgoingSMS += '30-40 mins.';
+      delay = 35;
       break;
     case 'C':
       outgoingSMS += '45-60 mins.';
+      delay = 53;
       break;
     case 'D':
       outgoingSMS += 'a little over 60 mins.';
+      delay = 70;
       break;
     default:
       validResponse = false;
@@ -43,10 +43,9 @@ router.post('/', (req, res) => {
     // send expected prep time message to customer
     twiml.message(outgoingSMS);
     // update order status in database
-    editStatus.editStatus(order.id)
+    editOrder.editStatus('CONFIRMED')
       .then(order => {
         console.log(order);
-        // res.json({ items });
       })
       .catch(err => {
         res
@@ -61,15 +60,3 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
-
-/*
-  if (req.body.Body === 'confirm') {
-    twiml.message('How long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins');
-  } else if (req.body.Body === 'decline') {
-    twiml.message('Order has been declined');
-  } else {
-    twiml.message(
-      'Respond to this message with either "confirm" or "decline"'
-    );
-  }
-*/

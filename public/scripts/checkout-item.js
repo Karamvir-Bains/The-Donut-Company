@@ -40,8 +40,11 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
       `;
     }
     $checkoutItems.append(checkoutItem);
-    $('#popup-item').hide();
-    $('#popup-background').hide();
+    // $('#popup-item').hide();
+    // $('#popup-background').hide();
+    // Mike trying to debug code....
+    $('#popup-background').css('display', 'none');
+    $('#popup-item').empty();
   });
 
 });
