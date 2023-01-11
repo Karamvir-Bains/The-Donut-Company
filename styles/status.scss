@@ -37,7 +37,6 @@ body {
     align-items: center;
 
     section#waiting {
-      display: none;
       display: flex;
     }
 
@@ -118,6 +117,10 @@ body {
     }
   } // main
 } // body
+
+#estimate-time {
+  margin-top: -2em;
+}
 
 .lds-spinner {
   color: official;
