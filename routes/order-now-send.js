@@ -1,4 +1,6 @@
 require('dotenv').config();
+const addOrder = require('../db/queries/insertOrder');
+
 
 const ACCOUNT_SID = process.env.ACCOUNT_SID;
 const AUTHENTICATION_TOKEN = process.env.AUTHENTICATION_TOKEN;
@@ -10,9 +12,8 @@ const express = require('express');
 const router  = express.Router();
 const client = require('twilio')(ACCOUNT_SID, AUTHENTICATION_TOKEN);
 
-
-
 router.post('/', (req, res) => {
+  addOrder.newOrder(req.session);
 
   let order = `New Order/ ${req.session.quantity} ${req.session.itemName}`;
 
@@ -30,6 +31,7 @@ router.post('/', (req, res) => {
     console.log(err)
     res.send("There was some error. Please try again later.")
   });
+
 });
 
 module.exports = router;
