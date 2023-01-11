@@ -9,15 +9,33 @@ const RESTAURANT_PHONE = process.env.RESTAURANT_PHONE;
 const express = require('express');
 const router  = express.Router();
 const client = require('twilio')(ACCOUNT_SID, AUTHENTICATION_TOKEN);
+const getUserNameQuery = require('../db/queries/nameById');
 
 
 
 router.post('/', (req, res) => {
 
-  let order = `New Order/ ${req.session.quantity} ${req.session.itemName}`;
+  // let user_name = '';
+  // getUserNameQuery.getUserNameById(req.body.user_id).then((username) => {
+  //   user_name = username;
+  // }).catch((error) => {
+  //  console.error(error);
+  // });
 
+  const sessionMsgBody = function () {
+    console.log('sessionItems', req.session.items);
+    let messageBody = '';
+    let items = [];
+    const sessionItems = req.session.items;
+    for (const itemKey in sessionItems) {
+      let item = sessionItems[itemKey];
+      items.push(`${item.quantity}x ${item.itemName}`);
+    }
+    return items.join('\n');
+  };
+  messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
   client.messages.create({
-    body: order,
+    body: messageBody,
     messagingServiceSid: MESSAGING_SERVICE_SID,
     from: PHONE_NUMBER,
     to: RESTAURANT_PHONE

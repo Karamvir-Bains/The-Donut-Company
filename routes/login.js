@@ -6,6 +6,7 @@ const router  = express.Router();
 router.get('/:user_id', (req, res) => {
   // set cookie
   req.session.user_id = req.params.user_id;
+  console.log('login session', req.session);
 
   // send the user to home page
   res.redirect('/');
