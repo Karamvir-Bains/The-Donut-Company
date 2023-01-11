@@ -8,7 +8,7 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) NOT NULL,
   order_placed TIMESTAMP NOT NULL DEFAULT (NOW() - interval '5 hour'),
-  order_ended TIMESTAMP,
+  estimated_order_time VARCHAR(255),
   order_status statuses NOT NULL
 );
 
