@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
   })
   .then(message => {
     console.log(message.sid);
+    req.session = null;
     res.render('status');
     // res.send("Order sent to restaurant owner")
   }).catch(err => {

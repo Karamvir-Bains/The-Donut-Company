@@ -30,7 +30,12 @@ app.use(express.static('public'));
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
-}))
+}));
+
+app.use((req, res, next) => {
+  req.session.items = req.session.items || {}
+  next()
+});
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own

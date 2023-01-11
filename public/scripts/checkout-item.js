@@ -20,21 +20,25 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
     data: {itemName, itemPrice, itemDescription, quantity}
   })
   .done((response) => {
-    const { itemName, itemDescription, itemPrice, quantity } = response;
-
     // Update HTML with the data
-    const $checkoutItems = $('#checkout_Items')
-    const checkoutItem = `
-        <div class="checkout-item-row">
-          <div class="checkout-item-quantity">
-            <p>${quantity}</p>
+    let checkoutItem = '';
+    const $checkoutItems = $('#checkout_Items');
+    for (const itemKey in response) {
+      let item = response[itemKey];
+      checkoutItem = `
+        <li>
+          <div class="checkout-item-row">
+            <div class="checkout-item-quantity">
+              <p>${item.quantity}</p>
+            </div>
+            <p id="checkout_item_title" class="checkout-item-title">${item.itemName}</p>
+            <p id="checkout_item_price" class="checkout-item-price">${item.itemPrice}</p>
           </div>
-          <p id="checkout_item_title" class="checkout-item-title">${itemName}</p>
-          <p id="checkout_item_price" class="checkout-item-price">${itemPrice}</p>
-        </div>
-        <p id="checkout_item_desc" class="checkout-item-description">${itemDescription}</p>
-        <button class="checkout-item-remove">Remove</button>
-    `;
+          <p id="checkout_item_desc" class="checkout-item-description">${item.itemDescription}</p>
+          <button class="checkout-item-remove">Remove</button>
+        </li>
+      `;
+    }
     $checkoutItems.append(checkoutItem);
     $('#popup-item').hide();
     $('#popup-background').hide();
