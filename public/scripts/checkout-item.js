@@ -36,8 +36,11 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
         <button class="checkout-item-remove">Remove</button>
     `;
     $checkoutItems.append(checkoutItem);
-    $('#popup-item').hide();
-    $('#popup-background').hide();
+    // $('#popup-item').hide();
+    // $('#popup-background').hide();
+    // Mike trying to debug code....
+    $('#popup-background').css('display', 'none');
+    $('#popup-item').empty();
   });
 
 });
