@@ -5,7 +5,6 @@ $(document).ready(function() {
     url: '/api/menu'
   })
   .done((response) => {
-    // I added a div element to index.ejs to append the results to...
     const $menuItems = $('#menu-items');
     // variables to allow categories to be hard-coded
     let count = 2;
@@ -34,9 +33,6 @@ $(document).ready(function() {
 
     // load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
-      // if($('#popup-item').hide()) {
-      //   $('#popup-item').show();
-      // }
       const $itemPopup = $('#popup-item');
       const itemSrc = $(this).children('img').attr('src');
       const itemName = $(this).children('p.item-title').text();

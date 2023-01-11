@@ -17,7 +17,6 @@ router.post('/', (req, res) => {
   const incomingSMS = req.body.Body.toUpperCase();
   let outgoingSMS = `Hi ${user.name}, good news! Your order should be ready for pickup in `;
   let validResponse = true;
-  let delay = 23;
 
   switch (incomingSMS) {
     case 'A':
@@ -25,15 +24,12 @@ router.post('/', (req, res) => {
       break;
     case 'B':
       outgoingSMS += '30-40 mins.';
-      delay = 35;
       break;
     case 'C':
       outgoingSMS += '45-60 mins.';
-      delay = 53;
       break;
     case 'D':
       outgoingSMS += 'a little over 60 mins.';
-      delay = 70;
       break;
     default:
       validResponse = false;

@@ -1,26 +1,28 @@
 const db = require('../connection');
 
 // guessing cookie session object here...
-const sessionObj = {
-  user_id: 3,
-  items: [
-    {
-      itemId: 3,
-      itemName: 'Sugar Top',
-      itemPrice: 'CA$2.99',
-      itemDescription: 'Topped with powdered sugar.',
-      quantity: '1'
-    },
-    {
-      itemId: 1,
-      itemName: 'Pink Sprinkle',
-      itemPrice: 'CA$4.99',
-      itemDescription: 'Iconic pink frosting, topped with sprinkles.',
-      quantity: '1'
-    }
-  ]
+const sessionItems = {
+  'item-1': {
+    user_id: 3,
+    itemId: 3,
+    itemName: 'Sugar Top',
+    itemPrice: 'CA$2.99',
+    itemDescription: 'Topped with powdered sugar.',
+    quantity: '1'
+  },
+  'item-2': {
+    user_id: 3,
+    itemId: 1,
+    itemName: 'Pink Sprinkle',
+    itemPrice: 'CA$4.99',
+    itemDescription: 'Iconic pink frosting, topped with sprinkles.',
+    quantity: '1'
+  }
 };
-// INSERT INTO users (name, phone) VALUES ('Alice', 5146729999);
+
+for (item in sessionItems) {
+  console.log(sessionItems[item].itemId);
+}
 
 // second, now we have the order id, add the items to the orders_menu_items table
 const addOrderItems = (orderId) => {
