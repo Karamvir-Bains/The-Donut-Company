@@ -24,8 +24,8 @@ router.post('/', (req, res) => {
   })
   .then(message => {
     console.log(message.sid);
-
-    res.send("Order sent to restaurant owner")
+    res.render('status');
+    // res.send("Order sent to restaurant owner")
   }).catch(err => {
     console.log(err)
     res.send("There was some error. Please try again later.")

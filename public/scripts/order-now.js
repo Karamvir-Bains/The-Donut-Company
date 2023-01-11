@@ -5,6 +5,7 @@ $(document).ready(function(){
           url: '/order-now-send',
           success: function(response){
               console.log(response);
+              window.location.href = '/status';
           }
       });
   });
