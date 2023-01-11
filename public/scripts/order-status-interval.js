@@ -15,22 +15,25 @@ $(document).ready(function() {
         previousStatus = orderStatus;
         if (orderStatus === "CONFIRMED") {
           orderStartTime = Date.now();
-          const estimateTime = fetchTime();
-          $("#estimate-time").text(`Estimate ${estimateTime} minutes`);
-          $("#waiting").css("display", "none");
-          $("#confirmation").css("display", "flex");
+          const estimateTime = fetchTime(response);
+          handleEstimateText(`Estimate ${estimateTime} minutes`);
+          waitingVisibilityHidden();
         }
 
         if (orderStatus === "FULFILLED") {
-          $("#order-message").text("The restaurant has finsihed you order");
-          $("#estimate-time").text("");
+          console.log("runs");
+          waitingVisibilityHidden();
+          $("#finishing").css("background-color", "lightgreen");
+          $("#order-message").text("The restaurant has finished you order");
+          handleEstimateText("");
           $("#ready").css("background-color", "lightgreen");
           clearInterval(requestInterval);
         }
 
         if (orderStatus === "CANCELLED") {
-          $("#order-message").text("The restaurant has cancelled your order");
-          $("#estimate-time").text("");
+          waitingVisibilityHidden();
+          handleOrderMessage("The restaurant has cancelled your order");
+          handleEstimateText("");
           $("#current-status").css("visibility", "hidden");
           clearInterval(requestInterval);
         }
@@ -39,7 +42,7 @@ $(document).ready(function() {
 });
 
 const fetchTime = function(response) {
-  return response.status["0"]["estimate_order_time"];
+  return response.status["0"]["estimated_order_time"];
 };
 
 const handleProgressBar = function() {
@@ -48,4 +51,17 @@ const handleProgressBar = function() {
   if ((currentTime - orderStartTime) > 15000) {
     $("#finishing").css("background-color", "lightgreen");
   }
+};
+
+const waitingVisibilityHidden = function() {
+  $("#waiting").css("display", "none");
+  $("#confirmation").css("display", "flex");
+};
+
+const handleEstimateText = function(text) {
+  $("#estimate-time").text(`${text}`);
+};
+
+const handleOrderMessage = function(text) {
+  $("#order-message").text(`${text}`);
 };

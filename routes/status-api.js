@@ -4,7 +4,7 @@ const statusQueries = require('../db/queries/status');
 
 router.get('/', (req, res) => {
   // will need to bring orderId in dynamically
-  const orderId = 6;
+  const orderId = 1;
   statusQueries.getStatus(orderId)
     .then(status => {
       res.json({ status });
