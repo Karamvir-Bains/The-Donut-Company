@@ -14,7 +14,6 @@ const client = require('twilio')(ACCOUNT_SID, AUTHENTICATION_TOKEN);
 const getUserNameQuery = require('../db/queries/nameById');
 
 router.post('/', (req, res) => {
-  addOrder.newOrder(req.session);
 
   // let user_name = '';
   // getUserNameQuery.getUserNameById(req.body.user_id).then((username) => {
@@ -22,6 +21,8 @@ router.post('/', (req, res) => {
   // }).catch((error) => {
   //  console.error(error);
   // });
+
+  let order;
 
   const sessionMsgBody = function () {
     // console.log('sessionItems', req.session.items);
@@ -32,8 +33,10 @@ router.post('/', (req, res) => {
       let item = sessionItems[itemKey];
       items.push(`${item.quantity}x ${item.itemName}`);
     }
+    order = req.session;
     return items.join('\n');
   };
+
   messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
   client.messages.create({
     body: messageBody,
@@ -43,6 +46,8 @@ router.post('/', (req, res) => {
   })
   .then(message => {
     console.log(message.sid);
+    // add the order to the database
+    addOrder.newOrder(order);
     req.session = null;
     res.render('status');
     // res.send("Order sent to restaurant owner")

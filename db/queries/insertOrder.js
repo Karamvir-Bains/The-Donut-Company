@@ -1,35 +1,14 @@
 const db = require('../connection');
 
-// guessing cookie session object here...
-const sessionItems = {
-  'item-1': {
-    userId: 3,
-    itemId: 3,
-    itemName: 'Sugar Top',
-    itemPrice: 'CA$2.99',
-    itemDescription: 'Topped with powdered sugar.',
-    quantity: '1'
-  },
-  'item-2': {
-    userId: 3,
-    itemId: 1,
-    itemName: 'Pink Sprinkle',
-    itemPrice: 'CA$4.99',
-    itemDescription: 'Iconic pink frosting, topped with sprinkles.',
-    quantity: '2'
-  }
-};
-
-// second, now we have the order id, add the items to the orders_menu_items table
-const addOrderItems = (orderId) => {
+// second step: now we have the order id, add the items to the orders_menu_items table
+const addOrderItems = (orderId, order) => {
   let buildString = 'INSERT INTO orders_menu_items (order_id, item_id, quantity) VALUES';
-  for (itemObject in sessionItems) {
-    const item = sessionItems[itemObject];
+  const items = order.items;
+  for (item of items) {
     buildString += `(${orderId}, ${item.itemId}, ${item.quantity}),`;
   }
   // replace the final comma with a semi-colon
-  const queryString = buildString.replace(/,$/,';');
-  console.log(queryString);
+  const queryString = buildString.replace(/,$/,';')
   return db
     .query(queryString)
     .then(data => {
@@ -37,15 +16,17 @@ const addOrderItems = (orderId) => {
     });
 };
 
-// first, add the new order to the orders table, returning the new order id
+// first step: add the new order to the orders table, returning the new order id
 const newOrder = (order) => {
+  const orderId = order.user_id;
+
   return db.query(`
     INSERT INTO orders (user_id, order_status)
-    VALUES (${sessionItems['item-1'].userId}, 'PENDING')
+    VALUES (${orderId}, 'PENDING')
     RETURNING id;
     `)
     .then(data => {
-      return addOrderItems(data.rows[0].id);
+      return addOrderItems(data.rows[0].id, order);
     });
 };
 
