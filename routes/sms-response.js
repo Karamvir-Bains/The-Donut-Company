@@ -16,37 +16,50 @@ router.post('/', (req, res) => {
   console.log('SMS received, req.body.Body:', req.body.Body);
   const incomingSMS = req.body.Body.toUpperCase();
   let outgoingSMS = `Hi ${user.name}, good news! Your order should be ready for pickup in `;
+  let delayText = '';
   let validResponse = true;
+  let orderStatus = 'CONFIRMED';
 
   switch (incomingSMS) {
     case 'A':
-      outgoingSMS += '20-25 mins.';
+      delayText = '20-25 mins.';
+      outgoingSMS += delayText;
       break;
     case 'B':
-      outgoingSMS += '30-40 mins.';
+      delayText = '30-40 mins.';
+      outgoingSMS += delayText;
       break;
     case 'C':
-      outgoingSMS += '45-60 mins.';
+      delayText = '45-60 mins.';
+      outgoingSMS += delayText;
       break;
     case 'D':
-      outgoingSMS += 'a little over 60 mins.';
+      delayText = 'a little over 60 mins.';
+      outgoingSMS += delayText;
+      break;
+    case 'READY':
+      outgoingSMS = 'Hello again from The Donut Company!\nYour order is now ready to be picked up... see you soon!';
+      orderStatus = 'FULFILLED';
       break;
     default:
       validResponse = false;
   };
 
   if (validResponse) {
+
+    console.log('in validresponse, orderStatus =', orderStatus);
+
     // send expected prep time message to customer
     twiml.message(outgoingSMS);
     // update order status in database
-    editOrder.editStatus('CONFIRMED')
+    editOrder.editStatus(orderStatus, delayText)
       .then(order => {
         console.log(order);
       })
       .catch(err => {
         res
           .status(500)
-          .json({ error: err.message });
+          // .json({ error: err.message });
       });
   } else {
     twiml.message('Please reply just "A", "B", "C" or "D" to let the client know the expected delay for the order.');
