@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
   //  console.error(error);
   // });
 
+  // order will be used to pass the session object to the newOrder function
   let order;
-  let orderId;
 
   const sessionMsgBody = function () {
     let items = [];
