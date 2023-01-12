@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
   // });
 
   const sessionMsgBody = function () {
-    console.log('sessionItems', req.session.items);
+    // console.log('sessionItems', req.session.items);
     let messageBody = '';
     let items = [];
     const sessionItems = req.session.items;

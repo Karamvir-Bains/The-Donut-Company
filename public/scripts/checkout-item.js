@@ -12,12 +12,13 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
   itemDescription = $(this).parent().children('p.popupDesc').text();
   itemPrice = $(this).parent().children('button#checkoutButton').children('p#donutTotal').text();
   quantity = $(this).parent().children('div.quantityButtons').children('p#donutQuantity').text();
+  itemId = Number($(this).closest('form').attr('id').slice(6));
 
   $.ajax({
     method: 'POST',
     dataType: 'json',
     url: '/checkout',
-    data: {itemName, itemPrice, itemDescription, quantity}
+    data: {itemId, itemName, itemPrice, itemDescription, quantity}
   })
   .done((response) => {
     // Update HTML with the data
