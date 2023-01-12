@@ -26,8 +26,6 @@ router.post('/', (req, res) => {
   let orderId;
 
   const sessionMsgBody = function () {
-    // console.log('sessionItems', req.session.items);
-    let messageBody = '';
     let items = [];
     const sessionItems = req.session.items;
     for (const itemKey in sessionItems) {
@@ -38,7 +36,7 @@ router.post('/', (req, res) => {
     return items.join('\n');
   };
 
-  messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
+  const messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
   client.messages.create({
     body: messageBody,
     messagingServiceSid: MESSAGING_SERVICE_SID,
@@ -58,13 +56,8 @@ router.post('/', (req, res) => {
       req.session.orderId = orderId;
       console.log('session object at end of order-now-send:', req.session);
       res.render('status');
-    });
-  })
-  .catch(err => {
-    console.log(err)
-    res.send("There was some error. Please try again later.")
-  });
-
-});
+    }); // then(orderId =>
+  }); // then(message =>
+}); // post
 
 module.exports = router;

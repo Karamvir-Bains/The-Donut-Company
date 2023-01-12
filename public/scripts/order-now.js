@@ -1,12 +1,12 @@
-$(document).ready(function(){
-  $("#order-now").click(function(){
-      $.ajax({
-          type: "POST",
-          url: '/order-now-send',
-          success: function(response){
-              console.log(response);
-              window.location.href = '/status';
-          }
+$(document).ready(function() {
+  $("#order-now").click(function() {
+    $.ajax({
+      method: "POST",
+      url: '/order-now-send'
+    })
+      .done(response => {
+        console.log(response);
+        window.location.href = '/status';
       });
   });
 });
