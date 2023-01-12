@@ -26,8 +26,6 @@ router.post('/', (req, res) => {
   let orderId;
 
   const sessionMsgBody = function () {
-    // console.log('sessionItems', req.session.items);
-    let messageBody = '';
     let items = [];
     const sessionItems = req.session.items;
     for (const itemKey in sessionItems) {
@@ -38,33 +36,32 @@ router.post('/', (req, res) => {
     return items.join('\n');
   };
 
-  messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
+  const messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
   client.messages.create({
     body: messageBody,
     messagingServiceSid: MESSAGING_SERVICE_SID,
     from: PHONE_NUMBER,
     to: RESTAURANT_PHONE
   })
-  .then(message => {
-    console.log(message.sid);
-    // add the order to the database
-    addOrder.newOrder(order)
-    .then(orderId => {
-      console.log('req.session before', req.session);
-      // empty session... try only to empty cart?
-      // req.session = null;
-      req.session.items = [];
-      console.log('req.session should be null', req.session);
-      // res.send("Order sent to restaurant owner")
-      console.log('orderId back from newOrder function', orderId);
-      req.session.orderId = orderId;
-      res.render('status');
+    .then(message => {
+      console.log(message.sid);
+      // add the order to the database
+      addOrder.newOrder(order)
+        .then(orderId => {
+          console.log('req.session before', req.session);
+          // empty session... try only to empty cart?
+          // req.session = null;
+          req.session.items = [];
+          console.log('req.session should be null', req.session);
+          console.log('orderId back from newOrder function', orderId);
+          req.session.orderId = orderId;
+          res.send("Order sent to restaurant owner");
+        });
+    })
+    .catch(err => {
+      console.log(err);
+      res.send("There was some error. Please try again later.");
     });
-  })
-  .catch(err => {
-    console.log(err)
-    res.send("There was some error. Please try again later.")
-  });
 
 });
 
