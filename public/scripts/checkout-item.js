@@ -3,6 +3,7 @@ let itemName = "";
 let itemDescription = "";
 let itemPrice = 0;
 let quantity = 0;
+let pricesArr = [];
 
 // const userName = $('#user_name').children('a').text();
 
@@ -36,12 +37,22 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
             <p id="checkout_item_price" class="checkout-item-price">${item.itemPrice}</p>
           </div>
           <p id="checkout_item_desc" class="checkout-item-description">${item.itemDescription}</p>
-          <button class="checkout-item-remove">Remove</button>
+          <button id="remove_item" class="checkout-item-remove">Remove</button>
         </li>
       `;
     }
     $checkoutItems.append(checkoutItem);
-    // Remove the popup item
+
+    // sum order total and add it to order now btn
+    pricesArr.push(itemPrice.slice(3));
+    let orderTotal = pricesArr.reduce((a,b) => {
+      return parseFloat(a) + parseFloat(b);
+    });
+    $('#order-total').text(`CA$${orderTotal}`);
+
+    // $('#popup-item').hide();
+    // $('#popup-background').hide();
+    // Mike trying to debug code....
     $('#popup-background').css('display', 'none');
     $('#popup-item').empty();
   });
