@@ -3,6 +3,7 @@ let itemName = "";
 let itemDescription = "";
 let itemPrice = 0;
 let quantity = 0;
+let pricesArr = [];
 
 // const userName = $('#user_name').children('a').text();
 
@@ -41,6 +42,15 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
       `;
     }
     $checkoutItems.append(checkoutItem);
+
+    // sum order total and add it to order now btn
+    pricesArr.push(itemPrice.slice(3));
+    console.log(pricesArr);
+    let orderTotal = pricesArr.reduce((a,b) => {
+      return parseFloat(a) + parseFloat(b);
+    });
+    $('#order-total').text(`CA$${orderTotal}`);
+
     // $('#popup-item').hide();
     // $('#popup-background').hide();
     // Mike trying to debug code....
