@@ -1,27 +1,21 @@
 const db = require('../connection');
 
-const editStatus = (status) => {
+const editStatus = (status, delay) => {
+  // if we are updating status as 'FULFILLED', delay will be ''
+  if (delay === '') {
+    delay = 'Ready for pickup.';
+  }
+
   return db.query(`
-    UPDATE orders SET order_status = ${status}
+    UPDATE orders
+    SET order_status = '${status}',
+        estimated_order_time = '${delay}'
     WHERE id = (SELECT MAX(id) FROM orders)
     RETURNING *;
   `)
     .then(data => {
       return data.rows[0];
-      console.log('editStatus', data.rows[0]);
     });
 };
 
-const addOrderEnded = (delay) => {
-  return db.query(`
-    UPDATE orders SET order_ended = (NOW() + interval '${delay} minute')
-    WHERE id = (SELECT MAX(id) FROM orders)
-    RETURNING *;
-  `)
-    .then(data => {
-      return data.rows[0];
-      console.log('addOrderEnded', data.rows[0]);
-    });
-};
-
-module.exports = { editStatus, addOrderEnded };
+module.exports = { editStatus };

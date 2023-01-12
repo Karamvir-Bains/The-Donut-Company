@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
   messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
   client.messages.create({
     body: messageBody,
-    messagingServiceSid: MESSAGING_SERVICE_SID,
+    // messagingServiceSid: MESSAGING_SERVICE_SID,
     from: PHONE_NUMBER,
     to: RESTAURANT_PHONE
   })
