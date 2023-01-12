@@ -47,7 +47,7 @@ const smsResponseRoutes = require('./routes/sms-response');
 const checkoutRoutes = require('./routes/checkout');
 const loginRoutes = require('./routes/login');
 const orderNowSendRoutes = require('./routes/order-now-send');
-
+const removeCookieItemRoutes = require('./routes/remove-cookie-item');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -63,6 +63,7 @@ app.use('/twilio', twilioRoutes);
 app.use('/sms-response', smsResponseRoutes);
 app.use('/checkout', checkoutRoutes);
 app.use('/order-now-send', orderNowSendRoutes);
+app.use('/remove-cookie-item', removeCookieItemRoutes)
 // Note: mount other resources here, using the same pattern above
 
 // Home page

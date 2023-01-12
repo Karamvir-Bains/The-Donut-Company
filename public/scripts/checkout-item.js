@@ -37,7 +37,7 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
             <p id="checkout_item_price" class="checkout-item-price">${item.itemPrice}</p>
           </div>
           <p id="checkout_item_desc" class="checkout-item-description">${item.itemDescription}</p>
-          <button class="checkout-item-remove">Remove</button>
+          <button id="remove_item" class="checkout-item-remove">Remove</button>
         </li>
       `;
     }
@@ -45,7 +45,6 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
 
     // sum order total and add it to order now btn
     pricesArr.push(itemPrice.slice(3));
-    console.log(pricesArr);
     let orderTotal = pricesArr.reduce((a,b) => {
       return parseFloat(a) + parseFloat(b);
     });
