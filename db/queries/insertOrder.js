@@ -12,7 +12,7 @@ const addOrderItems = (orderId, order) => {
   return db
     .query(queryString)
     .then(data => {
-
+      return orderId;
     });
 };
 
