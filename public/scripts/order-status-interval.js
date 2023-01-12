@@ -16,7 +16,7 @@ $(document).ready(function() {
         if (orderStatus === "CONFIRMED") {
           orderStartTime = Date.now();
           const estimateTime = fetchTime(response);
-          handleEstimateText(`Estimate ${estimateTime} minutes`);
+          handleEstimateText(`Estimate ${estimateTime}`);
           waitingVisibilityHidden();
         }
 
