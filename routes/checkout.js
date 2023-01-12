@@ -5,7 +5,6 @@ router.post('/', (req, res) => {
   const { itemId, itemName, itemDescription, itemPrice, quantity } = req.body;
 
   if (!req.session.items) {
-    console.log('test');
     req.session.items = [];
   }
 
