@@ -1,7 +1,7 @@
 const db = require('../connection');
 
 // second step: now we have the order id, add the items to the orders_menu_items table
-const addOrderItems = (orderId, order) => {
+const addOrderItems = async (orderId, order) => {
   let buildString = 'INSERT INTO orders_menu_items (order_id, item_id, quantity) VALUES';
   const items = order.items;
   for (item of items) {
@@ -9,7 +9,7 @@ const addOrderItems = (orderId, order) => {
   }
   // replace the final comma with a semi-colon
   const queryString = buildString.replace(/,$/,';')
-  return db
+  return await db
     .query(queryString)
     .then(data => {
       return orderId;

@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
   // });
 
   let order;
+  let orderId;
 
   const sessionMsgBody = function () {
     // console.log('sessionItems', req.session.items);
@@ -40,18 +41,27 @@ router.post('/', (req, res) => {
   messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
   client.messages.create({
     body: messageBody,
-    // messagingServiceSid: MESSAGING_SERVICE_SID,
+    messagingServiceSid: MESSAGING_SERVICE_SID,
     from: PHONE_NUMBER,
     to: RESTAURANT_PHONE
   })
   .then(message => {
     console.log(message.sid);
     // add the order to the database
-    addOrder.newOrder(order);
-    req.session = null;
-    res.render('status');
-    // res.send("Order sent to restaurant owner")
-  }).catch(err => {
+    addOrder.newOrder(order)
+    .then(orderId => {
+      console.log('req.session before', req.session);
+      // empty session... try only to empty cart?
+      // req.session = null;
+      req.session.items = [];
+      console.log('req.session should be null', req.session);
+      // res.send("Order sent to restaurant owner")
+      console.log('orderId back from newOrder function', orderId);
+      req.session.orderId = orderId;
+      res.render('status');
+    });
+  })
+  .catch(err => {
     console.log(err)
     res.send("There was some error. Please try again later.")
   });
