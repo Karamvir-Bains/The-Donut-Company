@@ -56,6 +56,7 @@ router.post('/', (req, res) => {
       // res.send("Order sent to restaurant owner")
       console.log('orderId back from newOrder function', orderId);
       req.session.orderId = orderId;
+      console.log('session object at end of order-now-send:', req.session);
       res.render('status');
     });
   })

@@ -3,7 +3,6 @@ const router  = express.Router();
 const statusQueries = require('../db/queries/status');
 
 router.get('/', (req, res) => {
-  console.log('in status-api.js... req.session', req.session);
   // bring the order id in dynamically from the cookie session
   const orderId = req.session.orderId;
   statusQueries.getStatus(orderId)
