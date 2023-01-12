@@ -50,11 +50,9 @@ router.post('/', (req, res) => {
     // add the order to the database
     addOrder.newOrder(order)
     .then(orderId => {
-      console.log('req.session before', req.session);
-      // empty session... try only to empty cart?
+      // instead of killing the session completely, just empty the items from the cart
       // req.session = null;
       req.session.items = [];
-      console.log('req.session should be null', req.session);
       // res.send("Order sent to restaurant owner")
       console.log('orderId back from newOrder function', orderId);
       req.session.orderId = orderId;

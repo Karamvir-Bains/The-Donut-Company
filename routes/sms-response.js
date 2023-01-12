@@ -11,6 +11,11 @@ const user = {
 };
 
 router.post('/', (req, res) => {
+
+  // testing to find user name and order id values
+  console.log('in sms-response.js post:', req.session);
+  return;
+
   const twiml = new MessagingResponse();
 
   console.log('SMS received, req.body.Body:', req.body.Body);

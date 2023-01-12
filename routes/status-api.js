@@ -4,8 +4,8 @@ const statusQueries = require('../db/queries/status');
 
 router.get('/', (req, res) => {
   console.log('in status-api.js... req.session', req.session);
-  // will need to bring orderId in dynamically
-  const orderId = 1;
+  // bring the order id in dynamically from the cookie session
+  const orderId = req.session.orderId;
   statusQueries.getStatus(orderId)
     .then(status => {
       res.json({ status });
