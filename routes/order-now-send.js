@@ -14,14 +14,6 @@ const client = require('twilio')(ACCOUNT_SID, AUTHENTICATION_TOKEN);
 const getUserNameQuery = require('../db/queries/nameById');
 
 router.post('/', (req, res) => {
-
-  // let user_name = '';
-  // getUserNameQuery.getUserNameById(req.body.user_id).then((username) => {
-  //   user_name = username;
-  // }).catch((error) => {
-  //  console.error(error);
-  // });
-
   // order will be used to pass the session object to the newOrder function
   let order;
 
@@ -36,29 +28,6 @@ router.post('/', (req, res) => {
     return items.join('\n');
   };
 
-  const messageBody = `New Order Request from [UserName]:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
-  client.messages.create({
-    body: messageBody,
-    messagingServiceSid: MESSAGING_SERVICE_SID,
-    from: PHONE_NUMBER,
-    to: RESTAURANT_PHONE
-  })
-  .then(message => {
-    console.log(message.sid);
-    // add the order to the database
-    addOrder.newOrder(order)
-    .then(orderId => {
-      // instead of killing the session completely, just empty the items from the cart
-      // req.session = null;
-      req.session.items = [];
-      // res.send("Order sent to restaurant owner")
-      console.log('orderId back from newOrder function', orderId);
-      req.session.orderId = orderId;
-      console.log('session object at end of order-now-send:', req.session);
-      res.render('status');
-    }); // then(orderId =>
-  }); // then(message =>
-}); // post
   // use async wait to get username from db by user_id ( Promise ).
   async function sendSmsWithUsername(user_id){
   let username;
@@ -69,7 +38,7 @@ router.post('/', (req, res) => {
     } catch(error) {
        console.error(error);
     }
-    messageBody = `New Order Request from ${username}:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
+    const messageBody = `New Order Request from ${username}:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
     client.messages.create({
       body: messageBody,
       messagingServiceSid: MESSAGING_SERVICE_SID,
@@ -78,10 +47,16 @@ router.post('/', (req, res) => {
     })
     .then(message => {
       console.log(message.sid);
-      req.session = null;
-      res.render('status');
-      // res.send("Order sent to restaurant owner")
-    }).catch(err => {
+      // add the order to the database
+      addOrder.newOrder(order)
+      .then(orderId => {
+        // instead of killing the session completely, just empty the items from the cart
+        req.session.items = [];
+        req.session.orderId = orderId;
+        res.send("Order sent to restaurant owner")
+      }); // then(orderId =>
+    }) // then(message =>
+    .catch(err => {
       console.log(err)
       res.send("There was some error. Please try again later.")
     });
