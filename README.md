@@ -2,6 +2,19 @@ The Donut Company
 =========
 A web app that allows a restaurant to communicate over SMS, with a client that has placed an order on the restaurant's store page. The restaurant owner is also able to update the order status page to allow the customer to know when the order is ready for pickup over SMS.
 
+## Final Product
+
+### Store Page
+!["Screenshot of Store Page"]()
+
+### Status Page
+!["Screenshot of Status Page"]()
+!["Screenshot of Confirmed Status"]()
+!["Screenshot of Ready Status"]()
+
+### SMS Communication
+!["Screenshot of Twilio SMS Communication"]()
+
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
