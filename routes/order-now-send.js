@@ -29,8 +29,8 @@ router.post('/', (req, res) => {
   };
 
   // Use async wait to get username from db by user_id ( Promise ).
-  async function sendSmsWithUsername(user_id){
-  let username;
+  const sendSmsWithUsername = async function(user_id) {
+    let username;
     try {
       let data = await getUserNameQuery.getUserNameById(req.session.user_id);
       console.log(data[0].name);
@@ -45,22 +45,22 @@ router.post('/', (req, res) => {
       from: PHONE_NUMBER,
       to: RESTAURANT_PHONE
     })
-    .then(message => {
-      console.log(message.sid);
-      // Add the order to the database
-      addOrder.newOrder(order)
-      .then(orderId => {
-        // Empty the items from the cart ready for the same user's next session
-        req.session.items = [];
-        req.session.orderId = orderId;
-        res.send("Order sent to restaurant owner")
-      }); // then(orderId =>
-    }) // then(message =>
-    .catch(err => {
-      console.log(err)
-      res.send("There was some error. Please try again later.")
-    });
-  }
+      .then(message => {
+        console.log(message.sid);
+        // Add the order to the database
+        addOrder.newOrder(order)
+          .then(orderId => {
+            // Empty the items from the cart ready for the same user's next session
+            req.session.items = [];
+            req.session.orderId = orderId;
+            res.send("Order sent to restaurant owner");
+          }); // then(orderId =>
+      }) // then(message =>
+      .catch(err => {
+        console.log(err);
+        res.send("There was some error. Please try again later.");
+      });
+  };
   sendSmsWithUsername(req.session.user_id);
 });
 
