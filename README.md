@@ -8,12 +8,12 @@ A web app that allows a restaurant to communicate over SMS, with a client that h
 !["Screenshot of Store Page"]()
 
 ### Status Page
-!["Screenshot of Status Page"]()
-!["Screenshot of Confirmed Status"]()
-!["Screenshot of Ready Status"]()
+!["Screenshot of Status Page"](https://github.com/Karamvir-Bains/Food-Pick-Up-Ordering-App/blob/update/README/docs/status-page.png)
+!["Screenshot of Confirmed Status"](https://github.com/Karamvir-Bains/Food-Pick-Up-Ordering-App/blob/update/README/docs/inprogress-status.png)
+!["Screenshot of Ready Status"](https://github.com/Karamvir-Bains/Food-Pick-Up-Ordering-App/blob/update/README/docs/complete-status.png)
 
 ### SMS Communication
-!["Screenshot of Twilio SMS Communication"]()
+!["Screenshot of Twilio SMS Communication"](https://github.com/Karamvir-Bains/Food-Pick-Up-Ordering-App/blob/update/README/docs/SMS-message.png)
 
 ## Getting Started
 
