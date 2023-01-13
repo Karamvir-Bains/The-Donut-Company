@@ -13,11 +13,11 @@ $('#checkout_Items').on('click', '#remove_item', function(event) {
     url: '/remove-cookie-item',
     data: { itemName },
   })
-  .done((response) => {
-    console.log(response);
-    $('#order-total').text(`CA$${newTotal}`);
+    .done((response) => {
+      console.log(response);
+      $('#order-total').text(`CA$${newTotal}`);
 
-  });
+    });
 
 
   this.parentElement.remove();

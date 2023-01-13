@@ -21,13 +21,13 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
     url: '/checkout',
     data: {itemId, itemName, itemPrice, itemDescription, quantity}
   })
-  .done((response) => {
+    .done((response) => {
     // Update HTML with the data
-    let checkoutItem = '';
-    const $checkoutItems = $('#checkout_Items');
-    for (const itemKey in response) {
-      let item = response[itemKey];
-      checkoutItem = `
+      let checkoutItem = '';
+      const $checkoutItems = $('#checkout_Items');
+      for (const itemKey in response) {
+        let item = response[itemKey];
+        checkoutItem = `
         <li>
           <div class="checkout-item-row">
             <div class="checkout-item-quantity">
@@ -40,22 +40,22 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
           <button id="remove_item" class="checkout-item-remove">Remove</button>
         </li>
       `;
-    }
-    $checkoutItems.append(checkoutItem);
+      }
+      $checkoutItems.append(checkoutItem);
 
-    // sum order total and add it to order now btn
-    pricesArr.push(itemPrice.slice(3));
-    let orderTotal = pricesArr.reduce((a,b) => {
-      return Math.round(parseFloat(a) + parseFloat(b)).toFixed(2);
+      // sum order total and add it to order now btn
+      pricesArr.push(itemPrice.slice(3));
+      let orderTotal = pricesArr.reduce((a,b) => {
+        return Math.round(parseFloat(a) + parseFloat(b)).toFixed(2);
+      });
+      $('#order-total').text(`CA$${orderTotal}`);
+
+      // $('#popup-item').hide();
+      // $('#popup-background').hide();
+      // Mike trying to debug code....
+      $('#popup-background').css('display', 'none');
+      $('#popup-item').empty();
     });
-    $('#order-total').text(`CA$${orderTotal}`);
-
-    // $('#popup-item').hide();
-    // $('#popup-background').hide();
-    // Mike trying to debug code....
-    $('#popup-background').css('display', 'none');
-    $('#popup-item').empty();
-  });
 
 });
 
