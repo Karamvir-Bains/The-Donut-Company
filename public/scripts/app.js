@@ -1,24 +1,24 @@
 $(document).ready(function() {
-  // load in the menu items
+  // Load in the menu items
   $.ajax({
     method: 'GET',
     url: '/api/menu'
   })
   .done((response) => {
     const $menuItems = $('#menu-items');
-    // variables to allow categories to be hard-coded
+    // Variables to allow categories to be hard-coded
     let count = 2;
     const categories = ['Most Popular', 'Seasonal', 'Vegan', 'Gluten Free', 'Assortment'];
     // iterate through the results of the menu items query then append the HTML
     for (const i in response.items) {
-      // check for category
+      // Check for category
       count++;
       if (count % 3 === 0 && count < 18) {
         const arrayIndex = (count / 3) - 1;
         const category = $(`<li class="menu-category" id="${categories[arrayIndex]}">${categories[arrayIndex]}</li>`);
         $menuItems.append(category);
       }
-      // add menu item
+      // Add menu item
       const item = response.items[i];
       const menuItem = $(`
         <li id="itemId${item.id}" class="menu-item">
@@ -31,7 +31,7 @@ $(document).ready(function() {
       $menuItems.append(menuItem);
     }
 
-    // load pop-up when user clicks on menu item
+    // Load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
       const $itemPopup = $('#popup-item');
       const itemSrc = $(this).children('img').attr('src');
@@ -60,18 +60,18 @@ $(document).ready(function() {
       `); // popItem
       $itemPopup.append(popItem);
 
-      // dim the background behing the popup using a full viewport div
+      // Dim the background behing the popup using a full viewport div
       const $popupBackground = $('#popup-background');
       $popupBackground.css('display', 'block');
 
-      // kill the popup if user clicks outside of it or on the close icon
+      // Kill the popup if user clicks outside of it or on the close icon
       const $closePopup = $('#closePopup');
       $popupBackground.add($closePopup).on('click', function() {
         $popupBackground.css('display', 'none');
         $itemPopup.empty();
       });
 
-      // modify quantity and price when -/+ buttons are clicked
+      // Modify quantity and order amount when -/+ buttons are clicked
       $('.quantityButton').on('click', function() {
         const $button = $(this);
         const oldValue = Number($('#donutQuantity').text());

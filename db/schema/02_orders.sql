@@ -12,5 +12,4 @@ CREATE TABLE orders (
   order_status statuses NOT NULL
 );
 
--- SELECT (NOW() - interval '5 hour');
 SET timezone = 'EST';

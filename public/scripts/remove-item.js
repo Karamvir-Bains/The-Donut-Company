@@ -1,4 +1,4 @@
-
+// Remove item from cart when user clicks the 'Remove' button.
 $('#checkout_Items').on('click', '#remove_item', function(event) {
   event.preventDefault();
   console.log(this.parentElement);
@@ -16,9 +16,6 @@ $('#checkout_Items').on('click', '#remove_item', function(event) {
   .done((response) => {
     console.log(response);
     $('#order-total').text(`CA$${newTotal}`);
-
   });
-
-
   this.parentElement.remove();
 });
