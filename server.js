@@ -51,7 +51,7 @@ const removeCookieItemRoutes = require('./routes/remove-cookie-item');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/login', loginRoutes)
+app.use('/login', loginRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/menu', menuApiRoutes);

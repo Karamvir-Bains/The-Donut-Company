@@ -42,3 +42,17 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
+
+## Documentation
+
+- `/`: Renders the store page HTML.
+- `/status`: Renders the status page HTML.
+- `/login`: Logs the user in and sets cookie session data.
+- `/checkout`: Handles adding items to checkout.
+- `/remove-cookie-item`: Handles removing items from checkout.
+- `/order-now-send`: Sends an order now request to the server, and creates a Twilio sms to the restaurant.
+- `/sms-response`: Post from Twilio sms that handles restaurant sms and server/client response.
+- `/api/users`: Returns users table.
+- `/api/menu`: Returns restaurant menus.
+- `/api/status`: Returns the current status of an order.
