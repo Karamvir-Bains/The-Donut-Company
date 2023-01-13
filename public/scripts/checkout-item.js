@@ -46,7 +46,7 @@ $('#popup-item').on('click', '#checkoutButton', function(event) {
     // sum order total and add it to order now btn
     pricesArr.push(itemPrice.slice(3));
     let orderTotal = pricesArr.reduce((a,b) => {
-      return Math.round(parseFloat(a) + parseFloat(b)).toFixed(2);
+      return (parseFloat(a) + parseFloat(b)).toFixed(2);
     });
     $('#order-total').text(`CA$${orderTotal}`);
 
