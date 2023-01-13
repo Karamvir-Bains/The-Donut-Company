@@ -5,7 +5,7 @@ A web app that allows a restaurant to communicate over SMS, with a client that h
 ## Final Product
 
 ### Store Page
-!["Screenshot of Store Page"]()
+!["Screenshot of Store Page"](https://github.com/Karamvir-Bains/Food-Pick-Up-Ordering-App/blob/master/docs/store-front.png)
 
 ### Status Page
 !["Screenshot of Status Page"](https://github.com/Karamvir-Bains/Food-Pick-Up-Ordering-App/blob/update/README/docs/status-page.png)
