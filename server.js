@@ -41,8 +41,6 @@ const menuApiRoutes = require('./routes/menu-api');
 const statusRoutes = require('./routes/status');
 const statusApiRoutes = require('./routes/status-api');
 const usersRoutes = require('./routes/users');
-const twilioApiRoutes = require('./routes/twilio-api');
-const twilioRoutes = require('./routes/twilio');
 const smsResponseRoutes = require('./routes/sms-response');
 const checkoutRoutes = require('./routes/checkout');
 const loginRoutes = require('./routes/login');
@@ -58,12 +56,10 @@ app.use('/api/menu', menuApiRoutes);
 app.use('/api/status', statusApiRoutes);
 app.use('/status', statusRoutes);
 app.use('/users', usersRoutes);
-app.use('/api/twilio', twilioApiRoutes);
-app.use('/twilio', twilioRoutes);
 app.use('/sms-response', smsResponseRoutes);
 app.use('/checkout', checkoutRoutes);
 app.use('/order-now-send', orderNowSendRoutes);
-app.use('/remove-cookie-item', removeCookieItemRoutes)
+app.use('/remove-cookie-item', removeCookieItemRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
