@@ -76,17 +76,17 @@ $(document).ready(function() {
           const $button = $(this);
           const oldValue = Number($('#donutQuantity').text());
           let newValue = oldValue;
-          if ($button.text() == "+") {
+          if ($button.text() === "+") {
             newValue++;
           } else {
             // Don't allow decrementing below zero
             if (oldValue > 0) {
               newValue--;
             }
-            $('#donutQuantity').text(newValue);
-            // update the checkout button
-            $('#donutTotal').text(`CA$${(Math.round(itemPrice * newValue *100)/100).toFixed(2)}`);
           }
+          $('#donutQuantity').text(newValue);
+          // update the checkout button
+          $('#donutTotal').text(`CA$${(Math.round(itemPrice * newValue *100)/100).toFixed(2)}`);
         }); // .quantityButton item on click
       }); // .menu item on click
     }); // .done
