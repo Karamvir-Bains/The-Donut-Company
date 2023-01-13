@@ -3,7 +3,6 @@ const router  = express.Router();
 
 router.post('/', (req, res) => {
   let itemNameToRemove = req.body.itemName;
-  console.log(itemNameToRemove);
   const filteredcookie = req.session.items.filter(function(item) { return item.itemName != itemNameToRemove; });
 
   req.session.items = filteredcookie;

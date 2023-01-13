@@ -1,6 +1,9 @@
 const db = require('../connection');
 
-// second step: now we have the order id, add the items to the orders_menu_items table
+/* Function adds the items from the order to the orders_menu_items table.
+ * Receives the cookie session object and the order_id as parameters.
+ * Returns the order_id
+ */
 const addOrderItems = (orderId, order) => {
   let buildString = 'INSERT INTO orders_menu_items (order_id, item_id, quantity) VALUES';
   const items = order.items;
@@ -16,7 +19,11 @@ const addOrderItems = (orderId, order) => {
     });
 };
 
-// first step: add the new order to the orders table, returning the new order id
+/* Function adds a new order to the orders table,
+ * then calls the addOrderItems function to add the items to the orders_menu_items table.
+ * Receives the cookie session object as a parameter.
+ * Returns the newly generated order id.
+ */
 const newOrder = (order) => {
   const orderId = order.user_id;
 

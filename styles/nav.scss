@@ -3,16 +3,12 @@
 nav {
   height: 600px;
   width: 100%;
-  // background-color: v.$main-color;
   background-image: url(../images/donuts.jpg);
   color: #FFFFFF;
   padding: 1.5em;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  //position: fixed;
-  //top: 0;
-  //z-index: 5;
 
   .logo-slogan {
     @include v.col-center-V;
@@ -25,7 +21,6 @@ nav {
     }
   }
 
-
   .nav-menu {
     display: flex;
     flex-direction: row;
@@ -33,7 +28,6 @@ nav {
     align-items: center;
     width: 20%;
     font-size: 18px;
-
 
     li {
       list-style: none;
@@ -43,7 +37,6 @@ nav {
     }
   }
 }
-
 
 .nav-menu a:link,
 .nav-menu a:visited,

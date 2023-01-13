@@ -14,7 +14,7 @@ const client = require('twilio')(ACCOUNT_SID, AUTHENTICATION_TOKEN);
 const getUserNameQuery = require('../db/queries/nameById');
 
 router.post('/', (req, res) => {
-  // order will be used to pass the session object to the newOrder function
+  // Order variable will be used to pass the session object to the newOrder function
   let order;
 
   const sessionMsgBody = function () {
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
     return items.join('\n');
   };
 
-  // use async wait to get username from db by user_id ( Promise ).
+  // Use async wait to get username from db by user_id ( Promise ).
   async function sendSmsWithUsername(user_id){
   let username;
     try {
@@ -47,10 +47,10 @@ router.post('/', (req, res) => {
     })
     .then(message => {
       console.log(message.sid);
-      // add the order to the database
+      // Add the order to the database
       addOrder.newOrder(order)
       .then(orderId => {
-        // instead of killing the session completely, just empty the items from the cart
+        // Empty the items from the cart ready for the same user's next session
         req.session.items = [];
         req.session.orderId = orderId;
         res.send("Order sent to restaurant owner")
@@ -61,9 +61,7 @@ router.post('/', (req, res) => {
       res.send("There was some error. Please try again later.")
     });
   }
-
   sendSmsWithUsername(req.session.user_id);
-
 });
 
 module.exports = router;

@@ -37,9 +37,9 @@ router.post('/', (req, res) => {
   };
 
   if (validResponse) {
-    // prepare expected prep time message to customer
+    // Prepare expected prep time message to customer
     twiml.message(outgoingSMS);
-    // update order status in database
+    // Update order status in database
     editOrder.editStatus(orderStatus, delayText)
       .then(order => {
         console.log(order);
@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
   } else {
     twiml.message('Please reply just "A", "B", "C" or "D" to let the client know the expected delay for the order.');
   }
-  // send the message
+  // Send the message
   res.type('text/xml').send(twiml.toString());
 });
 

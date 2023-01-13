@@ -21,7 +21,6 @@ $(document).ready(function() {
         }
 
         if (orderStatus === "FULFILLED") {
-          console.log("runs");
           waitingVisibilityHidden();
           $("#finishing").css("background-color", "lightgreen");
           $("#order-message").text("The restaurant has finished you order");

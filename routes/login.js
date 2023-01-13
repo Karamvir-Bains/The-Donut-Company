@@ -1,4 +1,4 @@
-// localhost:8080/login/3
+// Use localhost:8080/login/3 to login as user 3
 
 const express = require('express');
 const router  = express.Router();
