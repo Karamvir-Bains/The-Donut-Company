@@ -28,8 +28,8 @@ $(document).ready(function() {
           <p class="item-price">CA$${Number(item.price)/100}</p>
         </li>
       `);
-      $menuItems.append(menuItem);
-    }
+        $menuItems.append(menuItem);
+      }
 
     // Load pop-up when user clicks on menu item
     $('.menu-item').on('click', function() {
@@ -58,7 +58,7 @@ $(document).ready(function() {
           </div>
         </form>
       `); // popItem
-      $itemPopup.append(popItem);
+        $itemPopup.append(popItem);
 
       // Dim the background behing the popup using a full viewport div
       const $popupBackground = $('#popup-background');
@@ -83,12 +83,11 @@ $(document).ready(function() {
           if (oldValue > 0) {
             newValue--;
           }
-        }
-        $('#donutQuantity').text(newValue);
-        // update the checkout button
-        $('#donutTotal').text(`CA$${(Math.round(itemPrice * newValue *100)/100).toFixed(2)}`);
-      }); // .quantityButton item on click
+          $('#donutQuantity').text(newValue);
+          // update the checkout button
+          $('#donutTotal').text(`CA$${(Math.round(itemPrice * newValue *100)/100).toFixed(2)}`);
+        }); // .quantityButton item on click
 
-    }); // .menu item on click
-  }); // .done
+      }); // .menu item on click
+    }); // .done
 }); // document.ready

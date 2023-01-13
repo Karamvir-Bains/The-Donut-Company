@@ -35,8 +35,8 @@ router.post('/', (req, res) => {
       let data = await getUserNameQuery.getUserNameById(req.session.user_id);
       console.log(data[0].name);
       username = data[0].name;
-    } catch(error) {
-       console.error(error);
+    } catch (error) {
+      console.error(error);
     }
     const messageBody = `New Order Request from ${username}:\n\n${sessionMsgBody()}\n\nHow long will the order take?\nA) 20-25 mins\nB) 30-40 mins\nC) 45-60 mins\nD) 60+ mins`;
     client.messages.create({

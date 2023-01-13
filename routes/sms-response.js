@@ -12,28 +12,28 @@ router.post('/', (req, res) => {
   let orderStatus = 'CONFIRMED';
 
   switch (incomingSMS) {
-    case 'A':
-      delayText = '20-25 mins.';
-      outgoingSMS += delayText;
-      break;
-    case 'B':
-      delayText = '30-40 mins.';
-      outgoingSMS += delayText;
-      break;
-    case 'C':
-      delayText = '45-60 mins.';
-      outgoingSMS += delayText;
-      break;
-    case 'D':
-      delayText = 'a little over 60 mins.';
-      outgoingSMS += delayText;
-      break;
-    case 'READY':
-      outgoingSMS = 'Hello again from The Donut Company!\nYour order is now ready to be picked up... see you soon!';
-      orderStatus = 'FULFILLED';
-      break;
-    default:
-      validResponse = false;
+  case 'A':
+    delayText = '20-25 mins.';
+    outgoingSMS += delayText;
+    break;
+  case 'B':
+    delayText = '30-40 mins.';
+    outgoingSMS += delayText;
+    break;
+  case 'C':
+    delayText = '45-60 mins.';
+    outgoingSMS += delayText;
+    break;
+  case 'D':
+    delayText = 'a little over 60 mins.';
+    outgoingSMS += delayText;
+    break;
+  case 'READY':
+    outgoingSMS = 'Hello again from The Donut Company!\nYour order is now ready to be picked up... see you soon!';
+    orderStatus = 'FULFILLED';
+    break;
+  default:
+    validResponse = false;
   };
 
   if (validResponse) {
